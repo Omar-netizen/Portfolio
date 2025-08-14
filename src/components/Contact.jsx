@@ -6,25 +6,25 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'EMAIL',
-      value: 'mdomarkhan314@gmail.com', // TODO: Replace with actual email
+      value: 'mdomarkhan314@gmail.com', 
       href: 'mailto:mdomarkhan314@gmail.com'
     },
     {
       icon: Phone,
       label: 'PHONE',
-      value: '7982325440', // TODO: Replace with actual phone
+      value: '7982325440',
       href: 'tel:7982325440'
     },
     {
       icon: MapPin,
       label: 'LOCATION',
-      value: 'Delhi,India', // TODO: Replace with actual location
+      value: 'Delhi,India',
       href: '#'
     }
   ];
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GITHUB' }, // TODO: Add actual links
+    { icon: Github, href: 'https://github.com/Omar-netizen', label: 'GITHUB' }, 
     { icon: Linkedin, href: '#', label: 'LINKEDIN' },
    
   ];

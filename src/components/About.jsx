@@ -5,7 +5,7 @@ const About = () => {
   const skills = [
     'JavaScript', 'React', 'Node.js', 'Python', 'MongoDB', 'MySQL',
     'HTML5', 'CSS3', 'Tailwind', 'Express', 'Git','C#','Java','FastAPI' 
-    // TODO: Replace with your actual skills
+    
   ];
 
   const features = [
@@ -43,13 +43,13 @@ const About = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - About Text */}
+          
           <div className="space-y-6">
             <h3 className="text-2xl font-cyber text-cyan-400 tracking-wider">
               WHO_I_AM
             </h3>
             
-            {/* TODO: Replace with your actual story */}
+            
             <p className="text-gray-300 text-lg leading-relaxed">
               I am a passionate full-stack developer who loves turning ideas into digital reality. With expertise in both frontend and backend technologies, I create seamless web applications that combine beautiful user interfaces with robust server-side functionality.
              I thrive on solving complex problems, writing clean code, and staying updated with the latest industry trends.

@@ -57,7 +57,7 @@ const Hero = () => {
             </div>
          
           <div className="pt-12">
-            <div className="w-48 h-48 mx-auto cyber-border rounded-full bg-gray-900 flex items-center justify-center animate-glow">
+            <div className="w-48 h-48 mx-auto rounded-full bg-gray-900 flex items-center justify-center animate-glow">
               <img 
               src="/images/profile.png" 
               alt="Profile" 
