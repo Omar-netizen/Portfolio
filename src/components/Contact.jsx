@@ -1,143 +1,221 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, FileText } from 'lucide-react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const mailtoLink = `mailto:mdomarkhan314@gmail.com?subject=${encodeURIComponent(
+      `Portfolio Contact from ${formData.name}`
+    )}&body=${encodeURIComponent(
+      `${formData.message}\n\nFrom: ${formData.email}`
+    )}`;
+
+    window.location.href = mailtoLink;
+
+    setFormData({ name: '', email: '', message: '' });
+  };
+
   const contactInfo = [
     {
-      icon: Mail,
-      label: 'EMAIL',
-      value: 'mdomarkhan314@gmail.com', 
-      href: 'mailto:mdomarkhan314@gmail.com'
+      icon: <Mail className="w-5 h-5" />,
+      label: 'Email',
+      value: 'mdomarkhan314@gmail.com',
+      link: 'mailto:mdomarkhan314@gmail.com'
     },
     {
-      icon: Phone,
-      label: 'PHONE',
-      value: '7982325440',
-      href: 'tel:7982325440'
+      icon: <Phone className="w-5 h-5" />,
+      label: 'Phone',
+      value: '+91 7982325440',
+      link: 'tel:+917982325440'
     },
     {
-      icon: MapPin,
-      label: 'LOCATION',
-      value: 'Delhi,India',
-      href: '#'
+      icon: <MapPin className="w-5 h-5" />,
+      label: 'Location',
+      value: 'Delhi, India',
+      link: null
     }
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/Omar-netizen', label: 'GITHUB' }, 
-    { icon: Linkedin, href: '#', label: 'LINKEDIN' },
-   
+    {
+      icon: <Github size={20} />,
+      label: 'GitHub',
+      url: 'https://github.com/Omar-netizen'
+    },
+    {
+      icon: <Linkedin size={20} />,
+      label: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/md-omar-khan-9a1355268'
+    },
+    {
+      icon: <FileText size={20} />,
+      label: 'Portfolio',
+      url: 'https://portfolio-lake-two-56.vercel.app/'
+    }
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-8">
-        {/* Section Header */}
+    <section id="contact" className="relative py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      
+      {/* IMPORTANT: Prevent overlays from blocking inputs */}
+      <div className="absolute inset-0 pointer-events-none"></div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-retro text-gradient retro-glow mb-4">
-            CONTACT_ME
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-600 mb-4">
+            Get in Touch
           </h2>
-          <div className="w-24 h-1 bg-cyan-400 mx-auto mb-6"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Let's connect and build something amazing together
+          <div className="w-20 h-1 bg-gray-300 mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Have a project in mind or want to collaborate? Feel free to reach out!
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          {/* Contact Information */}
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-cyber text-white mb-8 tracking-wider">
-              GET_IN_TOUCH
-            </h3>
-            
-            <div className="flex flex-wrap justify-center gap-6 mb-12">
-              {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-center space-x-4 cyber-border bg-gray-900 p-4 hover:bg-gray-800 transition-all duration-300">
-                  <div className="cyber-border bg-black p-3">
-                    <item.icon className="text-cyan-400" size={20} />
+        <div className="grid md:grid-cols-2 gap-12">
+
+          {/* Contact Info */}
+          <div className="space-y-8">
+
+            <div>
+              <h3 className="text-2xl font-bold text-gray-600 mb-6">
+                Contact Information
+              </h3>
+
+              <div className="space-y-4">
+                {contactInfo.map((info, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200"
+                  >
+                    <div className="text-gray-600 bg-gray-100 p-3 rounded-lg">
+                      {info.icon}
+                    </div>
+
+                    <div>
+                      <p className="text-gray-500 text-xs font-medium mb-1">
+                        {info.label}
+                      </p>
+
+                      {info.link ? (
+                        <a
+                          href={info.link}
+                          className="text-gray-600 hover:text-gray-800 transition-colors font-medium"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className="text-gray-600 font-medium">
+                          {info.value}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-cyan-400 font-cyber text-sm tracking-wider">
-                      {item.label}
-                    </p>
-                    <a 
-                      href={item.href}
-                      className="text-gray-300 hover:text-cyan-400 transition-colors"
-                    >
-                      {item.value}
-                    </a>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Social Links */}
             <div>
-              <h4 className="text-lg font-cyber text-white mb-6 tracking-wider">
-                SOCIAL_LINKS
+              <h4 className="text-xl font-bold text-gray-600 mb-4">
+                Connect with Me
               </h4>
-              <div className="flex justify-center space-x-6">
+
+              <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
-                    href={social.href}
-                    className="cyber-border bg-gray-900 p-4 text-gray-400 hover:text-cyan-400 hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
-                    aria-label={social.label}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white p-4 rounded-lg border border-gray-200 text-gray-600 hover:text-gray-800 transition-all hover:shadow-md"
+                    title={social.label}
                   >
-                    <social.icon size={24} />
+                    {social.icon}
                   </a>
                 ))}
               </div>
             </div>
+
           </div>
+
+          {/* Contact Form */}
+          <div className="relative z-10 bg-white p-8 rounded-xl shadow-md border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-600 mb-6">
+              Send a Message
+            </h3>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+
+              <div>
+                <label className="block text-sm font-medium text-gray-600 mb-2">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-600 mb-2">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  placeholder="john@example.com"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-600 mb-2">
+                  Message
+                </label>
+                <textarea
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  rows={5}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 resize-none"
+                  placeholder="Your message here..."
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gray-100 text-gray-600 py-3 px-6 rounded-lg font-medium hover:bg-blue-100 transition-all flex items-center justify-center gap-2"
+              >
+                <Send size={18} />
+                Send Message
+              </button>
+
+            </form>
+          </div>
+
         </div>
       </div>
-
-      {/* Custom Styles */}
-      <style jsx>{`
-        .font-cyber {
-          font-family: 'Orbitron', monospace;
-        }
-        
-        .font-retro {
-          font-family: 'Orbitron', monospace;
-        }
-        
-        .text-gradient {
-          background: linear-gradient(45deg, #00ffff, #0080ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        
-        .retro-glow {
-          text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-        }
-        
-        .cyber-border {
-          border: 1px solid #333;
-          position: relative;
-        }
-        
-        .cyber-border:before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-          z-index: -1;
-        }
-        
-        .cyber-border:hover:before {
-          background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.2), transparent);
-        }
-        
-        input:focus, textarea:focus {
-          box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-      `}</style>
     </section>
   );
 };

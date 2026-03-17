@@ -1,165 +1,125 @@
 import React from 'react';
-import { Github, ExternalLink, Eye } from 'lucide-react';
+import { Github, ExternalLink, Calendar } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      id: 1,
-      title: 'AI-Powered NPC Dialogue System',
-      description: 'Built a 3D NPC interaction system where clicking or typing triggers real-time AI responses using LLMs.',
-      tech: ['Unity (C#)', 'FastAPI (Python)', 'OpenRouter API (Mistral-7B)', 'TextMeshPro'],
-      image: '/images/project1.png',
-      github: 'https://github.com/Omar-netizen/AI-Powered-NPC-Unity',
-      featured: true
+      title: 'AI Voice Assistant',
+      description: 'Offline-first AI voice assistant built with Next.js, Whisper WASM, and Gemini LLM with real-time speech-to-text processing.',
+      tech: ['Next.js', 'TypeScript', 'Whisper WASM', 'Gemini LLM', 'Web Workers', 'PWA'],
+      highlights: [
+        'Implemented real-time STT using Whisper WASM in Web Worker with audio resampling',
+        'Integrated Gemini LLM for intelligent replies with latency monitoring',
+        'Built PWA with Service Workers for offline functionality and model caching'
+      ],
+      github: 'https://github.com/Omar-netizen/ai-voice-assistant',
+      demo: null,
+      date: 'August 2024'
     },
     {
-      id: 2,
-      title: 'BRAINDUMP',
-      description: 'A productivity-focused MERN stack web app that lets users create, manage, and generate flashcards from their personal notes.',
-      tech: ['MongoDB', 'Express', 'React', 'Node.js'],
-      image: '/images/project2.png',
-      github: 'https://github.com/Omar-netizen/Braindump',
-      featured: false
+      title: 'GeoGuardian',
+      description: 'AI-powered environmental monitoring platform using Sentinel-2 satellite imagery for change detection.',
+      tech: ['Satellite Imagery', 'AI/ML', 'Python', 'Automated Alerts'],
+      highlights: [
+        'Built change detection system processing 10m resolution satellite data',
+        'Identifies deforestation, wildfires, and floods with automated email alerts',
+        'Saves NGOs $60,000/year in monitoring costs'
+      ],
+      github: 'https://github.com/Omar-netizen/geoguardian',
+      demo: null,
+      date: 'November 2024'
     },
     {
-      id: 3,
-      title: 'WorkoutBuddy',
-      description: 'This is a full-stack Workout Tracker App built using the MERN stack. The app also features a built-in AI-powered chatbot.',
-      tech: ['MongoDB', 'Express', 'React', 'Node.js'],
-      image: '/images/project3.png',
-      github: 'https://github.com/Omar-netizen/WorkoutBuddy',
-      featured: false
+      title: 'AI PDF Chatbot',
+      description: 'Intelligent chatbot that processes PDF documents and enables natural language Q&A using vector search.',
+      tech: ['React', 'Node.js', 'Express', 'Pinecone Vector DB', 'Gemini AI', 'RAG'],
+      highlights: [
+        'Advanced document processing with smart chunking and semantic embeddings',
+        'Vector similarity search for context-aware responses',
+        'Real-time PDF management with query expansion and semantic reranking'
+      ],
+      github: 'https://github.com/Omar-netizen/pdf-chat-app',
+      demo: null,
+      date: 'September 2024'
     }
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-retro text-gradient retro-glow mb-4">
-            MY_PROJECTS
+    <section id="projects" className="py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 animate-slide-up">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+            Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-cyan-400 mx-auto mb-6"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Explore some of my recent work and creative projects
+          <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Innovative solutions combining AI/ML with full-stack development
           </p>
         </div>
 
-        {/* Featured Project */}
-        {projects.filter(project => project.featured).map((project) => (
-          <div key={project.id} className="mb-16">
-            <div className="cyber-border bg-gray-900 overflow-hidden">
-              <div className="grid lg:grid-cols-2 gap-0">
-                
-                {/* Project Image */}
-                <div className="relative group">
-                  <div className="aspect-video bg-gray-800 flex items-center justify-center">
-                    <img src={project.image} alt={project.title} />
-                  </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Eye className="text-cyan-400" size={48} />
-                  </div>
-                </div>
-
-                {/* Project Info */}
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="mb-4">
-                    <span className="text-cyan-400 font-cyber text-sm tracking-wider">FEATURED PROJECT</span>
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-cyber text-white mb-4 tracking-wider">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div key={index} className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl overflow-hidden border border-gray-200 hover:border-primary transition-all hover:shadow-xl group">
+              <div className="p-6 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-xl font-display font-bold text-gray-900 flex-1">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, index) => (
-                      <span key={index} className="cyber-border bg-black text-cyan-400 px-3 py-1 text-sm font-cyber tracking-wider">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex space-x-4">
-                    <a href={project.github} className="flex items-center space-x-2 text-gray-400 hover:text-cyan-400 transition-colors">
-                      <Github size={20} />
-                      <span className="font-cyber tracking-wider">CODE</span>
-                    </a>
-                    {project.demo && (
-                      <a href={project.demo} className="flex items-center space-x-2 text-gray-400 hover:text-cyan-400 transition-colors">
-                        <ExternalLink size={20} />
-                        <span className="font-cyber tracking-wider">DEMO</span>
-                      </a>
-                    )}
+                  <div className="flex items-center gap-1 text-xs text-gray-500 ml-2">
+                    <Calendar size={12} />
+                    <span className="whitespace-nowrap">{project.date}</span>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* Other Projects */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.filter(project => !project.featured).map((project) => (
-            <div key={project.id} className="cyber-border bg-gray-900 overflow-hidden hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
-              
-              {/* Project Image */}
-              <div className="relative group">
-                <div className="aspect-video bg-gray-800 flex items-center justify-center">
-                  <img src={project.image} alt={project.title} 
-                   className="object-contain max-h-60 w-auto"/>
-                </div>
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Eye className="text-cyan-400" size={32} />
-                </div>
-              </div>
-
-              {/* Project Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-cyber text-white mb-3 tracking-wider">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                
+                <p className="text-gray-700 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
-
-                {/* Tech Stack */}
+                
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, index) => (
-                    <span key={index} className="bg-black text-cyan-400 px-2 py-1 text-xs font-cyber tracking-wider border border-cyan-400">
+                  {project.tech.map((tech, techIndex) => (
+                    <span 
+                      key={techIndex} 
+                      className="bg-white text-gray-700 px-3 py-1 rounded-full text-xs font-medium border border-blue-200"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Links */}
-                <div className="flex space-x-4">
-                  <a href={project.github} className="flex items-center space-x-1 text-gray-400 hover:text-cyan-400 transition-colors">
-                    <Github size={16} />
-                    <span className="font-cyber text-xs tracking-wider">CODE</span>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {project.highlights.map((highlight, idx) => (
+                    <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
+                      <span className="text-primary mt-1 flex-shrink-0">→</span>
+                      <span className="leading-relaxed">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex gap-4 pt-4 border-t border-gray-200">
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gray-700 hover:text-primary transition-colors font-medium"
+                  >
+                    <Github size={18} />
+                    <span className="text-sm">Code</span>
                   </a>
                   {project.demo && (
-                    <a href={project.demo} className="flex items-center space-x-1 text-gray-400 hover:text-cyan-400 transition-colors">
-                      <ExternalLink size={16} />
-                      <span className="font-cyber text-xs tracking-wider">DEMO</span>
+                    <a 
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-700 hover:text-primary transition-colors font-medium"
+                    >
+                      <ExternalLink size={18} />
+                      <span className="text-sm">Demo</span>
                     </a>
                   )}
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* View More Button */}
-        <div className="text-center mt-12">
-          <button className="cyber-border bg-transparent text-cyan-400 px-8 py-3 font-cyber tracking-wider hover:bg-cyan-400 hover:text-black transition-all duration-300">
-            VIEW_MORE_PROJECTS
-          </button>
         </div>
       </div>
     </section>

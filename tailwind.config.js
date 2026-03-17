@@ -7,17 +7,27 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'cyber': ['Orbitron', 'monospace'],
-        'retro': ['Audiowide', 'cursive'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+      },
+      colors: {
+        primary: '#3b82f6',
+        secondary: '#8b5cf6',
+        accent: '#f59e0b',
       },
       animation: {
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'slide-up': 'slideUp 0.6s ease-out',
         'float': 'float 3s ease-in-out infinite',
       },
       keyframes: {
-        glow: {
-          '0%': { boxShadow: '0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff' },
-          '100%': { boxShadow: '0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff' },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
