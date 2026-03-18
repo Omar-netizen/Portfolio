@@ -54,7 +54,7 @@ const Experience = () => {
                       {exp.title}
                     </h3>
                   </div>
-                  <p className="text-primary text-lg font-medium mb-1 ml-9">{exp.company}</p>
+                  <p className="text-primary text-gray-600 text-lg font-medium mb-1 ml-9">{exp.company}</p>
                   <div className="flex items-center gap-2 text-gray-600 text-sm ml-9">
                     <MapPin size={14} />
                     <span>{exp.location}</span>
